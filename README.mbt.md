@@ -23,8 +23,8 @@ moon test --deny-warn
 当前命令行演示使用内置样例；库 API 可直接检查任意字符串：
 
 ```mbt nocheck
-let diagnostics = @studentyang/moonbit-rtl/src.check_source(verilog_source)
-println(@studentyang/moonbit-rtl/src.diagnostics_text(diagnostics))
+let diagnostics = @yzfyzf12345678/moonbit-rtl/src.check_source(verilog_source)
+println(@yzfyzf12345678/moonbit-rtl/src.diagnostics_text(diagnostics))
 ```
 
 ## 设计说明

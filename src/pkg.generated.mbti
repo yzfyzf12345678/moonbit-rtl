@@ -1,5 +1,5 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "studentyang/moonbit-rtl/src"
+package "yzfyzf12345678/moonbit-rtl/src"
 
 // Values
 pub fn check(Design) -> Array[Diagnostic]
