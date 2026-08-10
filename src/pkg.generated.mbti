@@ -1,0 +1,112 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "studentyang/moonbit-rtl/src"
+
+// Values
+pub fn check(Design) -> Array[Diagnostic]
+
+pub fn check_source(String) -> Array[Diagnostic]
+
+pub fn diagnostics_json(Array[Diagnostic]) -> String
+
+pub fn diagnostics_text(Array[Diagnostic]) -> String
+
+pub fn lex(String) -> Array[Token]
+
+pub fn parse(String) -> Design
+
+// Errors
+
+// Types and methods
+pub struct AlwaysBlock {
+  sensitivity : Array[Sensitivity]
+  body : String
+  span : Span
+}
+
+pub struct Assignment {
+  lhs : String
+  rhs : String
+  span : Span
+}
+
+pub struct Design {
+  modules : Array[Module]
+}
+pub fn Design::empty() -> Self
+
+pub struct Diagnostic {
+  code : String
+  severity : Severity
+  message : String
+  line : Int
+  column : Int
+  signal : String?
+}
+
+pub struct Module {
+  name : String
+  ports : Array[Signal]
+  signals : Array[Signal]
+  assignments : Array[Assignment]
+  always_blocks : Array[AlwaysBlock]
+  span : Span
+}
+
+pub enum PortDirection {
+  Input
+  Output
+  Inout
+} derive(Eq)
+
+pub struct Position {
+  line : Int
+  column : Int
+}
+pub fn Position::new(Int, Int) -> Self
+
+pub struct Sensitivity {
+  signal : String
+  edge : String?
+}
+
+pub enum Severity {
+  Error
+  Warning
+  Info
+}
+
+pub struct Signal {
+  name : String
+  kind : SignalKind
+  direction : PortDirection?
+  width : Width?
+  span : Span
+}
+
+pub enum SignalKind {
+  Wire
+  Reg
+  Port
+}
+
+pub struct Span {
+  start : Position
+  end : Position
+}
+pub fn Span::single(Int, Int) -> Self
+
+pub struct Token {
+  text : String
+  line : Int
+  column : Int
+}
+
+pub struct Width {
+  msb : Int
+  lsb : Int
+}
+
+// Type aliases
+
+// Traits
+
