@@ -1,0 +1,8 @@
+import {
+  "moonbitlang/core/env",
+  "studentyang/moonbit-rtl/src" @rtl,
+}
+
+options(
+  "is-main": true,
+)
