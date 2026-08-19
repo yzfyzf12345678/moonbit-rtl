@@ -902,8 +902,8 @@ pub fn EditSet::apply(self : EditSet, source : String) -> String? {
   while index > 0 {
     index -= 1
     let edit = self.edits[index]
-    let prefix = result.sub(end?=Some(edit.start_offset)).to_owned()
-    let suffix = result.sub(start?=Some(edit.end_offset)).to_owned()
+    let prefix = result.sub(end=edit.start_offset).to_owned()
+    let suffix = result.sub(start=edit.end_offset).to_owned()
     result = prefix + edit.replacement + suffix
   }
   Some(result)
