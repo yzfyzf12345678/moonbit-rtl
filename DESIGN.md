@@ -7,15 +7,24 @@ The first release is an RTL front end for small Verilog-2001 designs. It is not 
 ## Pipeline
 
 ```text
-source -> lexer -> lightweight AST -> rule engine -> terminal/JSON
+source -> normalization -> lexer/spans -> lightweight AST
+       -> expression and instance enrichment
+       -> syntax/semantic/width/dataflow/contract rules
+       -> terminal/JSON/SARIF/Markdown/CI adapters
 ```
 
 The AST owns source spans so future rules can report precise locations without coupling the rule engine to token details. Output formatting is kept separate from analysis so a SARIF adapter can be added without changing checks.
 
 ## Rule identifiers
 
-`RTL001` is reserved for width mismatch, `RTL002` duplicate declaration, `RTL003` undriven output, `RTL004` undriven internal signal, `RTL005` multiple drivers, and `RTL006` unused input. The identifiers are stable integration points for editor and CI clients.
+`RTL001` is reserved for width mismatch, `RTL002` duplicate declaration,
+`RTL003` undriven output, `RTL004` undriven internal signal, `RTL005` multiple
+drivers, and `RTL006` unused input. Extended rules use the RTL008-RTL051 range.
+The identifiers are stable integration points for editor and CI clients.
 
-## Planned extensions
+## Extension points
 
-The next increments are file input and exit-status handling in the CLI, richer expression widths, `case` and instance AST nodes, configurable severity, SARIF output, and a language-server adapter. None of these are claimed as complete in version 0.1.0.
+The current API leaves room for a fuller SystemVerilog grammar, language-server
+transport, richer constant propagation, and synthesis-aware policies. These
+can be added behind the existing source-span, rule-configuration, and report
+interfaces without changing the basic CLI contract.

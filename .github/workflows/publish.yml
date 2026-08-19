@@ -1,0 +1,40 @@
+name: Publish Mooncakes package
+
+on:
+  workflow_dispatch:
+  push:
+    tags: ['v*.*.*']
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Install latest stable MoonBit
+        run: |
+          curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash
+          echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
+
+      - name: Validate package
+        run: |
+          moon version --all
+          moon update
+          moon fmt
+          git diff --exit-code
+          moon info
+          git diff --exit-code
+          moon check --target all --deny-warn
+          moon build --target wasm-gc
+          moon test --target wasm-gc --deny-warn
+
+      - name: Publish to Mooncakes
+        env:
+          MOONCAKES_TOKEN: ${{ secrets.MOONCAKES_TOKEN }}
+        run: moon publish --frozen

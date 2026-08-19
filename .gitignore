@@ -1,5 +1,6 @@
 target/
 _build/
 .moon/
+.mooncakes/
 *.log
 coverage/

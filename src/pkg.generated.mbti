@@ -2,17 +2,307 @@
 package "yzfyzf12345678/moonbit-rtl/src"
 
 // Values
+pub fn acceptance_project_line(ProjectSnapshot) -> String
+
+pub fn acceptance_summary(PipelineResult) -> String
+
+pub fn analysis_cache_key(String, PipelineOptions) -> String
+
+pub fn analyze_source(String, String, CheckConfig) -> AnalysisReport
+
+pub fn apply_edits(String, Array[TextEdit]) -> String
+
+pub fn apply_suppressions(Array[Diagnostic], Array[Suppression]) -> Array[Diagnostic]
+
+pub fn artifacts_with_hash(ProjectSnapshot, String) -> Array[SourceArtifact]
+
+pub fn baseline_changes_text(Array[BaselineChange]) -> String
+
+pub fn baseline_from_diagnostics(Array[Diagnostic]) -> DiagnosticBaseline
+
+pub fn benchmark_fixture(String) -> BenchmarkFixture
+
+pub fn benchmark_fixture_is_valid(BenchmarkFixture) -> Bool
+
+pub fn benchmark_fixture_source(String) -> String
+
+pub fn benchmark_fixtures() -> Array[BenchmarkFixture]
+
+pub fn benchmark_json(Array[BenchmarkResult]) -> String
+
+pub fn benchmark_markdown(Array[BenchmarkResult]) -> String
+
+pub fn benchmark_preview(String, Int) -> String
+
+pub fn benchmark_source_bytes() -> Int
+
+pub fn changed_paths(Array[FileChange]) -> Array[String]
+
+pub fn changes_markdown(Array[FileChange]) -> String
+
 pub fn check(Design) -> Array[Diagnostic]
+
+pub fn check_contracts(Design, CheckConfig, Array[Diagnostic]) -> Unit
+
+pub fn check_port_compatibility(Module, Module, PortConnection) -> PortCompatibility
 
 pub fn check_source(String) -> Array[Diagnostic]
 
+pub fn check_source_with_config(String, CheckConfig) -> Array[Diagnostic]
+
+pub fn check_width_policy(Module, CheckConfig, Array[Diagnostic]) -> Unit
+
+pub fn check_with_config(Design, CheckConfig) -> Array[Diagnostic]
+
+pub fn compare_baseline(DiagnosticBaseline, Array[Diagnostic]) -> Array[BaselineChange]
+
+pub fn compare_benchmark(BenchmarkResult, BenchmarkResult) -> BenchmarkComparison
+
+pub fn compare_contracts(ModuleContract, ModuleContract) -> Array[ContractIssue]
+
+pub fn compare_snapshots(ProjectSnapshot, ProjectSnapshot) -> Array[FileChange]
+
+pub fn concatenation_width(Array[Expr], Module) -> Int?
+
+pub fn contract_issues(Design) -> Array[ContractIssue]
+
+pub fn contract_issues_markdown(Array[ContractIssue]) -> String
+
+pub fn coordinate(String, Int, Int) -> SourceCoordinate
+
+pub fn coordinate_text(SourceCoordinate) -> String
+
+pub fn deduplicate_diagnostics(Array[Diagnostic]) -> Array[Diagnostic]
+
+pub fn delimiter_fingerprint(String) -> String
+
+pub fn design_contracts_json(Design) -> String
+
+pub fn design_interfaces(Design) -> String
+
+pub fn design_metrics(String) -> DesignMetrics
+
+pub fn design_module_report(String) -> String
+
+pub fn design_outline(String) -> String
+
+pub fn design_width_reports(Design) -> String
+
+pub fn diagnostic_context(String, Diagnostic, Int) -> String
+
+pub fn diagnostic_excerpt(String, Diagnostic) -> String
+
+pub fn diagnostic_max_severity(Array[Diagnostic]) -> Severity?
+
+pub fn diagnostic_preview(String, Diagnostic) -> String
+
+pub fn diagnostic_rule_ids(Array[Diagnostic]) -> Array[String]
+
+pub fn diagnostics_exit_code(Array[Diagnostic]) -> Int
+
+pub fn diagnostics_exit_code_with_policy(Array[Diagnostic], Bool) -> Int
+
+pub fn diagnostics_github(Array[Diagnostic]) -> String
+
 pub fn diagnostics_json(Array[Diagnostic]) -> String
+
+pub fn diagnostics_json_lines(Array[Diagnostic]) -> String
+
+pub fn diagnostics_markdown(Array[Diagnostic]) -> String
+
+pub fn diagnostics_sarif(Array[Diagnostic]) -> String
+
+pub fn diagnostics_summary(Array[Diagnostic]) -> String
 
 pub fn diagnostics_text(Array[Diagnostic]) -> String
 
+pub fn diagnostics_with_excerpts(String, Array[Diagnostic]) -> String
+
+pub fn duplicate_module_owners(ProjectSnapshot) -> Array[String]
+
+pub fn edits_preserve_module_count(String, Array[TextEdit]) -> Bool
+
+pub fn evaluate_constant(Expr) -> Int?
+
+pub fn evaluate_number(String) -> Int?
+
+pub fn explain_rule(String) -> String
+
+pub fn expr_binary(Expr, String, Expr) -> Expr
+
+pub fn expr_index(Expr, Expr) -> Expr
+
+pub fn expr_name(String) -> Expr
+
+pub fn expr_number(String) -> Expr
+
+pub fn expression_is_scalar(Expr, Module) -> Bool
+
+pub fn failing_artifacts(ProjectSnapshot) -> Array[SourceArtifact]
+
+pub fn filter_diagnostics(Array[Diagnostic], String?, String?, Severity?) -> Array[Diagnostic]
+
+pub fn filter_diagnostics_by_code(Array[Diagnostic], String) -> Array[Diagnostic]
+
+pub fn filter_diagnostics_by_lines(Array[Diagnostic], Int, Int) -> Array[Diagnostic]
+
+pub fn first_error(Array[Diagnostic]) -> Diagnostic?
+
+pub fn first_warning(Array[Diagnostic]) -> Diagnostic?
+
+pub fn format_assignment(Assignment, FormatOptions, Int) -> String
+
+pub fn format_design(Design, FormatOptions) -> String
+
+pub fn format_expr(Expr) -> String
+
+pub fn format_module(Module, FormatOptions) -> String
+
+pub fn format_width(Width, FormatOptions) -> String
+
+pub fn hierarchy_paths(Design, String) -> Array[String]
+
+pub fn hierarchy_roots(Design) -> Array[String]
+
+pub fn hierarchy_tree(Design) -> String
+
+pub fn index_hits(Design) -> Array[SymbolHit]
+
+pub fn interface_changes(Design, Design) -> Array[String]
+
+pub fn is_suppressed(Diagnostic, Array[Suppression]) -> Bool
+
 pub fn lex(String) -> Array[Token]
 
+pub fn lexer_category_counts(String) -> String
+
+pub fn lexer_stress_source(Int) -> String
+
+pub fn lexical_report(String) -> String
+
+pub fn literal_has_unknown(String) -> Bool
+
+pub fn literal_width(String) -> Int?
+
+pub fn module_at_line(Design, Int) -> Module?
+
+pub fn module_interface(Module) -> String
+
+pub fn module_owners(ProjectSnapshot, String) -> Array[String]
+
+pub fn naming_edits(Design, String) -> Array[TextEdit]
+
+pub fn narrowing_assignments(Module) -> Array[Assignment]
+
+pub fn new_baseline_findings(Array[BaselineChange]) -> Array[Diagnostic]
+
+pub fn normalize_source(String) -> String
+
+pub fn normalize_tokens(String, Bool) -> String
+
 pub fn parse(String) -> Design
+
+pub fn parse_baseline(String) -> DiagnosticBaseline
+
+pub fn parse_check_config(String) -> CheckConfig
+
+pub fn parse_diagnostics(String) -> Array[Diagnostic]
+
+pub fn parse_outline(String) -> Array[String]
+
+pub fn parse_suppressions(String) -> Array[Suppression]
+
+pub fn parse_with_diagnostics(String) -> ParseResult
+
+pub fn paths_with_findings(ProjectSnapshot) -> Array[String]
+
+pub fn pipeline_contract() -> String
+
+pub fn pipeline_options_stamp(PipelineOptions) -> String
+
+pub fn pipeline_stage_names() -> Array[String]
+
+pub fn profile_config(String) -> CheckConfig
+
+pub fn profile_names() -> Array[String]
+
+pub fn public_api_signature(Design) -> String
+
+pub fn query_symbols(Design, String) -> Array[SymbolHit]
+
+pub fn query_symbols_text(Design, String) -> String
+
+pub fn render_report(Array[Diagnostic], ReportFormat) -> String
+
+pub fn report_format_from_text(String) -> ReportFormat
+
+pub fn resolved_baseline_count(Array[BaselineChange]) -> Int
+
+pub fn rule_catalog() -> String
+
+pub fn rule_dashboard(Array[Diagnostic]) -> String
+
+pub fn run_benchmark(BenchmarkFixture, Int) -> BenchmarkResult
+
+pub fn run_default_pipeline(String) -> PipelineResult
+
+pub fn run_pipeline(String, PipelineOptions) -> PipelineResult
+
+pub fn run_workspace(Array[SourceUnit], PipelineOptions) -> WorkspaceResult
+
+pub fn severity_from_text(String) -> Severity?
+
+pub fn snapshot_is_clean(ProjectSnapshot) -> Bool
+
+pub fn sort_diagnostics(Array[Diagnostic]) -> Array[Diagnostic]
+
+pub fn source_delta(String, String) -> String
+
+pub fn source_fingerprint(String) -> String
+
+pub fn source_hash(String) -> String
+
+pub fn source_line(String, Int) -> String
+
+pub fn source_line_count(String) -> Int
+
+pub fn source_map_report(String) -> String
+
+pub fn source_units(Array[String], Array[String]) -> Array[SourceUnit]
+
+pub fn span_text(String, Span) -> String
+
+pub fn status_label(Array[Diagnostic]) -> String
+
+pub fn suppressed_count(Array[Diagnostic], Array[Suppression]) -> Int
+
+pub fn symbol_coordinates(String, Design, String) -> Array[SourceCoordinate]
+
+pub fn syntax_diagnostics(String) -> Array[Diagnostic]
+
+pub fn syntax_is_safe(String) -> Bool
+
+pub fn token_at(String, Int, Int) -> Token?
+
+pub fn token_dump(String) -> String
+
+pub fn token_occurrences(String, String) -> Array[Span]
+
+pub fn trailing_whitespace_fixes(String) -> EditSet?
+
+pub fn unreachable_modules(Design) -> Array[String]
+
+pub fn uppercase_port_edit(Signal, String) -> TextEdit?
+
+pub fn validate_design(Design) -> Array[SyntaxIssue]
+
+pub fn validate_syntax(String) -> SyntaxReport
+
+pub fn warning_artifacts(ProjectSnapshot) -> Array[SourceArtifact]
+
+pub fn widening_assignments(Module) -> Array[Assignment]
+
+pub fn width_policy_summary(Module) -> String
 
 // Errors
 
@@ -21,18 +311,179 @@ pub struct AlwaysBlock {
   sensitivity : Array[Sensitivity]
   body : String
   span : Span
+  kind : AlwaysKind
+  statements : Array[Statement]
 }
+
+pub enum AlwaysKind {
+  AlwaysLevel
+  AlwaysPosedge
+  AlwaysNegedge
+  AlwaysAny
+  AlwaysComb
+  AlwaysLatch
+  AlwaysFF
+} derive(Eq)
+
+pub struct AnalysisReport {
+  source_name : String
+  metrics : DesignMetrics
+  diagnostics : Array[Diagnostic]
+  stats : DiagnosticStats
+}
+pub fn AnalysisReport::to_json(Self) -> String
+pub fn AnalysisReport::to_text(Self) -> String
 
 pub struct Assignment {
   lhs : String
   rhs : String
   span : Span
+  operator : String
+  lhs_expr : Expr?
+  rhs_expr : Expr?
+  procedural : Bool
 }
+pub fn Assignment::read_names(Self) -> Array[String]
+pub fn Assignment::write_name(Self) -> String?
+
+pub enum BaselineChange {
+  NewFinding(Diagnostic)
+  ResolvedFinding(BaselineEntry)
+}
+
+pub struct BaselineEntry {
+  code : String
+  line : Int
+  column : Int
+  signal : String?
+}
+pub fn BaselineEntry::matches(Self, Diagnostic) -> Bool
+
+pub struct BenchmarkComparison {
+  token_delta : Int
+  diagnostic_delta : Int
+  source_delta : Int
+  improved : Bool
+}
+
+pub struct BenchmarkFixture {
+  name : String
+  source : String
+  module_count : Int
+  expected_tokens : Int
+}
+
+pub struct BenchmarkResult {
+  fixture : String
+  rounds : Int
+  tokens : Int
+  diagnostics : Int
+  modules : Int
+  source_lines : Int
+}
+
+pub struct CaseItem {
+  labels : Array[Expr]
+  is_default : Bool
+  statements : Array[Statement]
+  span : Span
+}
+
+pub enum ChangeKind {
+  Added
+  Modified
+  Removed
+  Unchanged
+} derive(Eq)
+pub fn ChangeKind::to_text(Self) -> String
+
+pub struct CheckConfig {
+  rules : Array[RuleSetting]
+  include_info : Bool
+  max_diagnostics : Int
+  check_instances : Bool
+  check_procedural : Bool
+}
+pub fn CheckConfig::default() -> Self
+pub fn CheckConfig::with_max_diagnostics(Self, Int) -> Self
+pub fn CheckConfig::with_severity(Self, String, Severity) -> Self
+pub fn CheckConfig::without(Self, String) -> Self
+pub fn CheckConfig::without_info(Self) -> Self
+
+pub struct CheckSummary {
+  errors : Int
+  warnings : Int
+  infos : Int
+  modules : Int
+  signals : Int
+  assignments : Int
+  instances : Int
+}
+pub fn CheckSummary::from(Design, Array[Diagnostic]) -> Self
+pub fn CheckSummary::to_json(Self) -> String
+
+pub struct ContractIssue {
+  code : String
+  message : String
+  subject : String
+}
+
+pub struct DataflowFact {
+  name : String
+  state : SignalState
+  reads : Int
+  writes : Int
+  first_write_line : Int?
+}
+
+pub struct DataflowReport {
+  facts : Array[DataflowFact]
+  cycles : Array[String]
+  order : Array[String]
+}
+pub fn DataflowReport::to_json(Self) -> String
+pub fn DataflowReport::to_markdown(Self) -> String
 
 pub struct Design {
   modules : Array[Module]
 }
+pub fn Design::dependency_graph(Self) -> DesignGraph
+pub fn Design::duplicate_modules(Self) -> Array[String]
 pub fn Design::empty() -> Self
+pub fn Design::find_module(Self, String) -> Module?
+pub fn Design::module_names(Self) -> Array[String]
+pub fn Design::port_count(Self) -> Int
+pub fn Design::signal_count(Self) -> Int
+
+pub struct DesignGraph {
+  modules : Array[String]
+  edges : Array[ModuleDependency]
+}
+pub fn DesignGraph::dependencies_of(Self, String) -> Array[String]
+pub fn DesignGraph::dependents_of(Self, String) -> Array[String]
+pub fn DesignGraph::has_cycle(Self) -> Bool
+pub fn DesignGraph::to_dot(Self) -> String
+pub fn DesignGraph::topological_order(Self) -> Array[String]
+
+pub struct DesignIndex {
+  modules : Array[String]
+  signals : Array[(String, String)]
+  instances : Array[(String, String, String)]
+}
+pub fn DesignIndex::from(Design) -> Self
+pub fn DesignIndex::symbols_with_prefix(Self, String) -> Array[String]
+
+pub struct DesignMetrics {
+  module_count : Int
+  port_count : Int
+  signal_count : Int
+  assignment_count : Int
+  instance_count : Int
+  always_count : Int
+  token_count : Int
+  source_lines : Int
+}
+pub fn DesignMetrics::to_json(Self) -> String
 
 pub struct Diagnostic {
   code : String
@@ -41,7 +492,75 @@ pub struct Diagnostic {
   line : Int
   column : Int
   signal : String?
+  end_line : Int
+  end_column : Int
+  module_name : String?
+  related : Array[String]
 }
+pub fn Diagnostic::new(String, Severity, String, Int, Int) -> Self
+
+pub struct DiagnosticBaseline {
+  entries : Array[BaselineEntry]
+  version : Int
+}
+pub fn DiagnosticBaseline::deduplicated(Self) -> Self
+pub fn DiagnosticBaseline::to_text(Self) -> String
+
+pub struct DiagnosticStats {
+  total : Int
+  errors : Int
+  warnings : Int
+  infos : Int
+  rules : Array[RuleCount]
+}
+pub fn DiagnosticStats::from(Array[Diagnostic]) -> Self
+pub fn DiagnosticStats::to_json(Self) -> String
+
+pub struct EditSet {
+  edits : Array[SourceEdit]
+  source_hash : String
+}
+pub fn EditSet::apply(Self, String) -> String?
+pub fn EditSet::from_edits(String, Array[SourceEdit]) -> Self?
+
+pub enum Expr {
+  Name(String)
+  Number(String)
+  StringLiteral(String)
+  Unary(String, Expr)
+  Binary(Expr, String, Expr)
+  Conditional(Expr, Expr, Expr)
+  Concatenation(Array[Expr])
+  Replication(Int, Expr)
+  Index(Expr, Expr)
+  PartSelect(Expr, Expr, Expr)
+  Call(String, Array[Expr])
+  Unknown(String)
+}
+pub fn Expr::contains_operator(Self, String) -> Bool
+pub fn Expr::depth(Self) -> Int
+pub fn Expr::fold_constants(Self) -> Self
+pub fn Expr::is_lvalue(Self) -> Bool
+pub fn Expr::node_count(Self) -> Int
+pub fn Expr::references(Self) -> Array[String]
+pub fn Expr::root_name(Self) -> String?
+pub fn Expr::to_text(Self) -> String
+pub fn Expr::width(Self, Module) -> Int?
+
+pub struct FileChange {
+  path : String
+  kind : ChangeKind
+  previous_hash : String?
+  current_hash : String?
+}
+
+pub struct FormatOptions {
+  indent : Int
+  spaces_inside_ranges : Bool
+  include_comments : Bool
+  trailing_newline : Bool
+}
+pub fn FormatOptions::default() -> Self
 
 pub struct Module {
   name : String
@@ -50,6 +569,157 @@ pub struct Module {
   assignments : Array[Assignment]
   always_blocks : Array[AlwaysBlock]
   span : Span
+  parameters : Array[Parameter]
+  instances : Array[ModuleInstance]
+  statements : Array[Statement]
+}
+pub fn Module::clock_names(Self) -> Array[String]
+pub fn Module::complexity_score(Self) -> Int
+pub fn Module::contract(Self) -> ModuleContract
+pub fn Module::dataflow(Self) -> DataflowReport
+pub fn Module::has_reset_input(Self) -> Bool
+pub fn Module::has_signal(Self, String) -> Bool
+pub fn Module::inout_names(Self) -> Array[String]
+pub fn Module::input_names(Self) -> Array[String]
+pub fn Module::instance_names(Self) -> Array[String]
+pub fn Module::is_combinational(Self) -> Bool
+pub fn Module::names_of_kind(Self, SignalKind) -> Array[String]
+pub fn Module::output_names(Self) -> Array[String]
+pub fn Module::port_signature(Self) -> String
+pub fn Module::read_names(Self) -> Array[String]
+pub fn Module::width_of(Self, String) -> Int?
+pub fn Module::width_report(Self) -> WidthReport
+pub fn Module::write_names(Self) -> Array[String]
+
+pub struct ModuleContract {
+  name : String
+  ports : Array[PortContract]
+  parameter_names : Array[String]
+}
+pub fn ModuleContract::port(Self, String) -> PortContract?
+pub fn ModuleContract::signature(Self) -> String
+
+pub struct ModuleDependency {
+  from : String
+  to : String
+  instance_count : Int
+}
+
+pub struct ModuleInstance {
+  module_name : String
+  instance_name : String
+  parameters : Array[Parameter]
+  connections : Array[PortConnection]
+  span : Span
+}
+
+pub enum NetType {
+  NetWire
+  NetTri
+  NetWand
+  NetWor
+  NetSupply0
+  NetSupply1
+  VariableReg
+  VariableLogic
+  VariableInteger
+  VariableTime
+  GenerateVariable
+  UnknownNet(String)
+} derive(Eq)
+
+pub struct Parameter {
+  name : String
+  value : String
+  width : Width?
+  span : Span
+}
+
+pub struct ParseDiagnostic {
+  code : String
+  message : String
+  line : Int
+  column : Int
+  severity : Severity
+}
+
+pub struct ParseResult {
+  design : Design
+  diagnostics : Array[ParseDiagnostic]
+}
+
+pub struct PipelineEvent {
+  stage : PipelineStage
+  input_size : Int
+  output_size : Int
+  note : String
+}
+
+pub struct PipelineOptions {
+  config : CheckConfig
+  include_parse_diagnostics : Bool
+  compute_metrics : Bool
+  compute_graph : Bool
+  enable_suppressions : Bool
+  warnings_as_errors : Bool
+  file_name : String
+}
+pub fn PipelineOptions::default() -> Self
+pub fn PipelineOptions::with_config(Self, CheckConfig) -> Self
+pub fn PipelineOptions::with_file_name(Self, String) -> Self
+pub fn PipelineOptions::with_reports(Self, Bool, Bool) -> Self
+pub fn PipelineOptions::with_suppressions(Self, Bool) -> Self
+pub fn PipelineOptions::with_warnings_as_errors(Self, Bool) -> Self
+
+pub struct PipelineResult {
+  source_hash : String
+  source_lines : Int
+  design : Design
+  diagnostics : Array[Diagnostic]
+  summary : CheckSummary
+  metrics : DesignMetrics?
+  graph : DesignGraph?
+  suppressions : Array[Suppression]
+  events : Array[PipelineEvent]
+}
+pub fn PipelineResult::event_trace(Self) -> String
+pub fn PipelineResult::exit_code(Self, Bool) -> Int
+pub fn PipelineResult::is_success(Self, Bool) -> Bool
+pub fn PipelineResult::is_well_formed(Self) -> Bool
+pub fn PipelineResult::render(Self, ReportFormat) -> String
+pub fn PipelineResult::source_summary(Self, String) -> SourceSummary
+pub fn PipelineResult::status_line(Self) -> String
+pub fn PipelineResult::to_json(Self) -> String
+
+pub enum PipelineStage {
+  NormalizeSource
+  ParseDesign
+  ValidateSyntax
+  CheckSemantics
+  BuildReports
+} derive(Eq)
+pub fn PipelineStage::to_text(Self) -> String
+
+pub enum PortCompatibility {
+  Compatible
+  WidthMismatch(Int, Int)
+  DirectionMismatch
+  MissingPort
+  UndeclaredSignal
+} derive(Eq)
+
+pub struct PortConnection {
+  port : String
+  expression : Expr?
+  raw_expression : String
+  span : Span
+}
+
+pub struct PortContract {
+  name : String
+  direction : PortDirection?
+  width : Int
+  required : Bool
 }
 
 pub enum PortDirection {
@@ -64,6 +734,59 @@ pub struct Position {
 }
 pub fn Position::new(Int, Int) -> Self
 
+pub struct ProjectSnapshot {
+  name : String
+  artifacts : Array[SourceArtifact]
+  total_lines : Int
+  total_modules : Int
+  total_diagnostics : Int
+  errors : Int
+  warnings : Int
+}
+pub fn ProjectSnapshot::empty(String) -> Self
+pub fn ProjectSnapshot::find(Self, String) -> SourceArtifact?
+pub fn ProjectSnapshot::from_sources(String, Array[SourceUnit], PipelineOptions) -> Self
+pub fn ProjectSnapshot::inventory(Self) -> String
+pub fn ProjectSnapshot::snapshot_report(Self) -> String
+pub fn ProjectSnapshot::sorted_artifacts(Self) -> Array[SourceArtifact]
+pub fn ProjectSnapshot::status(Self) -> ProjectStatus
+pub fn ProjectSnapshot::to_json(Self) -> String
+
+pub struct ProjectStatus {
+  name : String
+  files : Int
+  lines : Int
+  modules : Int
+  diagnostics : Int
+  errors : Int
+  warnings : Int
+  clean : Bool
+}
+pub fn ProjectStatus::to_json(Self) -> String
+pub fn ProjectStatus::to_text(Self) -> String
+
+pub enum ReportFormat {
+  TextReport
+  JsonReport
+  SarifReport
+  MarkdownReport
+  SummaryReport
+  GithubReport
+}
+
+pub struct RuleCount {
+  code : String
+  errors : Int
+  warnings : Int
+  infos : Int
+}
+
+pub struct RuleSetting {
+  code : String
+  severity : Severity?
+  enabled : Bool
+}
+
 pub struct Sensitivity {
   signal : String
   edge : String?
@@ -73,7 +796,7 @@ pub enum Severity {
   Error
   Warning
   Info
-}
+} derive(Eq)
 
 pub struct Signal {
   name : String
@@ -87,26 +810,190 @@ pub enum SignalKind {
   Wire
   Reg
   Port
+} derive(Eq)
+
+pub enum SignalState {
+  UnknownState
+  InputState
+  ConstantState
+  DrivenState
+  MaybeDrivenState
+  UnusedState
+} derive(Eq)
+
+pub struct SourceArtifact {
+  path : String
+  hash : String
+  lines : Int
+  modules : Array[String]
+  diagnostics : Int
+  errors : Int
+  warnings : Int
 }
+pub fn SourceArtifact::from_result(String, PipelineResult) -> Self
+
+pub struct SourceCoordinate {
+  line : Int
+  column : Int
+  offset : Int
+}
+
+pub struct SourceEdit {
+  start_offset : Int
+  end_offset : Int
+  replacement : String
+  description : String
+}
+pub fn SourceEdit::new(Int, Int, String, String) -> Self
+
+pub struct SourceIndex {
+  offsets : Array[Int]
+  source_length : Int
+}
+pub fn SourceIndex::from(String) -> Self
+pub fn SourceIndex::line_at(Self, Int) -> Int
+pub fn SourceIndex::line_offset(Self, Int) -> Int?
+
+pub struct SourceSummary {
+  path : String
+  hash : String
+  lines : Int
+  modules : Int
+  tokens : Int
+  diagnostics : Int
+  errors : Int
+  warnings : Int
+  suppressed : Int
+}
+
+pub struct SourceUnit {
+  path : String
+  source : String
+}
+pub fn SourceUnit::new(String, String) -> Self
 
 pub struct Span {
   start : Position
   end : Position
 }
+pub fn Span::range(Position, Position) -> Self
 pub fn Span::single(Int, Int) -> Self
+
+pub enum Statement {
+  EmptyStatement
+  ProceduralAssignment(Assignment)
+  ConditionalStatement(Expr, Array[Statement], Array[Statement])
+  CaseStatement(Expr, Array[CaseItem])
+  BlockStatement(Array[Statement])
+  InstanceStatement(ModuleInstance)
+  ExpressionStatement(Expr)
+  UnknownStatement(String)
+}
+
+pub struct Suppression {
+  target_line : Int
+  code : String
+  reason : String
+}
+
+pub struct SymbolHit {
+  kind : SymbolKind
+  name : String
+  owner : String
+  line : Int
+  column : Int
+}
+
+pub enum SymbolKind {
+  ModuleSymbol
+  PortSymbol
+  SignalSymbol
+  InstanceSymbol
+} derive(Eq)
+
+pub struct SyntaxIssue {
+  code : String
+  message : String
+  line : Int
+  column : Int
+  token : String
+}
+
+pub struct SyntaxReport {
+  issues : Array[SyntaxIssue]
+  module_count : Int
+  endmodule_count : Int
+  balanced : Bool
+}
+pub fn SyntaxReport::to_json(Self) -> String
+pub fn SyntaxReport::to_text(Self) -> String
+
+pub struct TextEdit {
+  start : Int
+  end : Int
+  replacement : String
+  reason : String
+}
 
 pub struct Token {
   text : String
   line : Int
   column : Int
+  kind : TokenKind
+  offset : Int
+  end_offset : Int
 }
+
+pub enum TokenKind {
+  IdentifierToken
+  NumberToken
+  StringToken
+  OperatorToken
+  PunctuationToken
+  DirectiveToken
+} derive(Eq)
 
 pub struct Width {
   msb : Int
   lsb : Int
 }
+pub fn Width::bits(Self) -> Int
+pub fn Width::is_descending(Self) -> Bool
+pub fn Width::single() -> Self
+
+pub struct WidthFact {
+  expression : String
+  actual : Int?
+  expected : Int?
+  source_line : Int
+  source_column : Int
+}
+
+pub struct WidthReport {
+  facts : Array[WidthFact]
+  unknown : Int
+  mismatches : Int
+}
+pub fn WidthReport::to_json(Self) -> String
+
+pub struct WorkspaceFinding {
+  path : String
+  diagnostic : Diagnostic
+}
+
+pub struct WorkspaceResult {
+  files : Int
+  findings : Array[WorkspaceFinding]
+  summaries : Array[SourceSummary]
+  errors : Int
+  warnings : Int
+}
+pub fn WorkspaceResult::exit_code(Self) -> Int
+pub fn WorkspaceResult::sorted_findings(Self) -> Array[WorkspaceFinding]
+pub fn WorkspaceResult::status_line(Self) -> String
+pub fn WorkspaceResult::to_json(Self) -> String
+pub fn WorkspaceResult::to_markdown(Self) -> String
 
 // Type aliases
 
 // Traits
-

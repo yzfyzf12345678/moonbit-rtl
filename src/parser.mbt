@@ -115,7 +115,28 @@ fn split_names(
       active_direction = Some(Output)
     } else if text == "inout" {
       active_direction = Some(Inout)
-    } else if text != "," && text != ";" && text != "(" && text != ")" {
+    } else if text == "[" {
+      match parse_width(tokens, i) {
+        Some((w, next)) => {
+          width = Some(w)
+          i = next - 1
+        }
+        None => ()
+      }
+    } else if text != "," &&
+      text != ";" &&
+      text != "(" &&
+      text != ")" &&
+      text != "wire" &&
+      text != "tri" &&
+      text != "wand" &&
+      text != "wor" &&
+      text != "reg" &&
+      text != "logic" &&
+      text != "integer" &&
+      text != "time" &&
+      text != "signed" &&
+      text != "unsigned" {
       result.push(make_signal(tokens, kind, active_direction, i, text, width))
     }
     i += 1
@@ -125,7 +146,7 @@ fn split_names(
 
 ///|
 /// Parse the supported module, port, wire, reg, assign and always forms.
-pub fn parse(source : String) -> Design {
+fn parse_legacy(source : String) -> Design {
   let tokens = lex(source)
   let design = Design::empty()
   let mut i = 0
@@ -139,6 +160,9 @@ pub fn parse(source : String) -> Design {
         assignments: [],
         always_blocks: [],
         span: Span::single(token_line(tokens, i), tokens[i].column),
+        parameters: [],
+        instances: [],
+        statements: [],
       }
       let end = find_token(tokens, i + 2, "endmodule").unwrap_or(
         tokens.length(),
@@ -183,6 +207,10 @@ pub fn parse(source : String) -> Design {
             lhs,
             rhs,
             span: Span::single(token_line(tokens, j), tokens[j].column),
+            operator: "=",
+            lhs_expr: None,
+            rhs_expr: None,
+            procedural: false,
           })
           j = statement_end + 1
         } else if word == "always" {
@@ -208,6 +236,8 @@ pub fn parse(source : String) -> Design {
             sensitivity,
             body: tokens_to_text(tokens, j, statement_end),
             span: Span::single(token_line(tokens, j), tokens[j].column),
+            kind: AlwaysLevel,
+            statements: [],
           })
           j = statement_end + 1
         } else {

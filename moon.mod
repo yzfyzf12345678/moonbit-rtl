@@ -11,3 +11,7 @@ description = "A practical Verilog RTL parser and rule checker written in MoonBi
 repository = "https://github.com/yzfyzf12345678/moonbit-rtl"
 
 keywords = [ "verilog", "rtl", "fpga", "linter", "parser" ]
+
+import {
+  "moonbitlang/x@0.4.48",
+}

@@ -61,6 +61,10 @@ fn diagnostic(
     line: span.start.line,
     column: span.start.column,
     signal,
+    end_line: span.end.line,
+    end_column: span.end.column,
+    module_name: None,
+    related: [],
   }
 }
 
@@ -192,20 +196,18 @@ fn check_widths(design_module : Module, result : Array[Diagnostic]) -> Unit {
 ///|
 /// Run the default RTL rule set over a design.
 pub fn check(design : Design) -> Array[Diagnostic] {
-  let result : Array[Diagnostic] = []
-  for design_module in design.modules {
-    check_duplicates(design_module, result)
-    check_drivers(design_module, result)
-    check_references(design_module, result)
-    check_widths(design_module, result)
-  }
-  result
+  check_with_config(design, CheckConfig::default())
 }
 
 ///|
 /// Parse and check Verilog source in one call.
 pub fn check_source(source : String) -> Array[Diagnostic] {
-  check(parse(source))
+  // Keep the original source-checking API stable: new dataflow informational
+  // rules are available through the configurable entry point, while legacy
+  // informational rules retain their established behavior here.
+  check_with_config(parse(source), CheckConfig::default()).filter(fn(item) {
+    item.code != "RTL040" && item.code != "RTL041" && item.code != "RTL042"
+  })
 }
 
 ///|
@@ -241,21 +243,26 @@ pub fn diagnostics_json(items : Array[Diagnostic]) -> String {
     if !first {
       out += ","
     }
-    let level = match item.severity {
-      Error => "error"
-      Warning => "warning"
-      Info => "info"
+    let module_name = match item.module_name {
+      Some(name) => name
+      None => ""
     }
     out += "{\"code\":\"" +
-      item.code +
+      json_escape(item.code) +
       "\",\"severity\":\"" +
-      level +
+      severity_text(item.severity) +
       "\",\"line\":" +
       item.line.to_string() +
       ",\"column\":" +
       item.column.to_string() +
-      ",\"message\":\"" +
-      item.message +
+      ",\"end_line\":" +
+      item.end_line.to_string() +
+      ",\"end_column\":" +
+      item.end_column.to_string() +
+      ",\"module\":\"" +
+      json_escape(module_name) +
+      "\",\"message\":\"" +
+      json_escape(item.message) +
       "\"}"
     first = false
   }
