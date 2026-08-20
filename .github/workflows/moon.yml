@@ -85,4 +85,4 @@ jobs:
             ! -path './.mooncakes/*' \
             -print0 | xargs -0 cat | wc -l)
           echo "Production MoonBit source lines: $lines"
-          test "$lines" -ge 8000
+          test "$lines" -ge 20000

@@ -25,9 +25,9 @@ Observed output:
 
 | Fixture | Modules | Source lines | Bytes | Tokens / round | Diagnostics / round | Total elapsed | Tokens / ms |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| small | 3 | 31 | 655 | 250 | 4 | 336 ms | 74 |
-| medium | 9 | 119 | 2606 | 973 | 10 | 1403 ms | 69 |
-| large | 25 | 343 | 7634 | 2821 | 27 | 4196 ms | 67 |
+| small | 3 | 31 | 655 | 250 | 4 | 542 ms | 46 |
+| medium | 9 | 119 | 2606 | 973 | 10 | 1286 ms | 75 |
+| large | 25 | 343 | 7634 | 2821 | 27 | 3845 ms | 73 |
 
 The CLI reports aggregate token and diagnostic counts over all rounds. The
 fixture diagnostics are expected findings from the current rule policy; the
@@ -49,7 +49,7 @@ Wall-clock values depend on CPU, operating-system scheduling, toolchain, and
 build state. Compare source size, token counts, and diagnostic counts before
 comparing elapsed time.
 
-The same native coverage run executed 42 tests successfully and reported
-1,963 covered lines out of 3,779 instrumented lines (52.00%). Coverage is an
+The same native coverage run executed 61 tests successfully and reported
+3,612 covered lines out of 8,674 instrumented lines (41.64%). Coverage is an
 engineering signal; the boundary-test count and deterministic fixture counts
 remain the primary regression checks.

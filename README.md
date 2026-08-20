@@ -83,11 +83,12 @@ source
   -> reports, CLI, editor and CI adapters
 ~~~
 
-The implementation is split into cohesive modules: lexer.mbt,
-parser.mbt/advanced_parser.mbt, model.mbt, checker.mbt, analysis.mbt,
-extra_rules.mbt, design_tools.mbt, dataflow.mbt, width_analysis.mbt,
-contract.mbt, reporting.mbt, pipeline.mbt, and project_io.mbt. Generated
-interfaces are refreshed by moon info; they are never hand-edited.
+The implementation is split into cohesive modules: lexer/parser and source
+mapping; model, checker, extra rules, dataflow, width, contract, and pipeline
+analysis; preprocessing, four-state bit vectors, simulation, elaboration,
+timing, coverage, intermediate IR, advanced rules, project configuration,
+LSP, query, netlist, verification, release reporting, and trace replay.
+Generated interfaces are refreshed by moon info; they are never hand-edited.
 
 ## Benchmarks
 
@@ -102,11 +103,12 @@ moon run cmd --target native -- --benchmark=1000
 
 ## Tests
 
-The test suite covers empty input, comments and strings, source coordinates,
-operators, ANSI widths, parameters, expressions, instances, malformed
-modules, rule configuration, report formats, source maps, dataflow,
-contracts, suppressions, baselines, edits, project snapshots, and benchmark
-fixtures.
+The test suite contains 61 passing tests and covers empty input, comments and
+strings, source coordinates, operators, ANSI widths, parameters, expressions,
+instances, malformed modules, preprocessor directives, four-state vectors,
+simulation, rule profiles, netlist boundaries, query cones, verification
+vectors, trace replay, report formats, source maps, dataflow, contracts,
+suppressions, baselines, edits, project snapshots, and benchmark fixtures.
 
 ~~~bash
 moon fmt
@@ -117,9 +119,12 @@ moon check --target all --deny-warn
 moon test --target all --deny-warn
 ~~~
 
-The local acceptance inventory contains more than 8,000 non-test MoonBit
-source lines, excluding generated build and dependency output. CI recomputes
-this inventory instead of relying on a claimed number.
+The local production inventory contains 20,040 non-test MoonBit source lines
+across 38 source files, excluding generated build, dependency, and test output.
+CI recomputes this inventory instead of relying on a claimed number. The
+native coverage run observed 3,612 covered out of 8,674 instrumented lines
+(41.64%); coverage is reported as an engineering signal rather than a claim
+that every production branch is exercised.
 
 ## CI
 

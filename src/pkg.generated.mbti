@@ -6,15 +6,29 @@ pub fn acceptance_project_line(ProjectSnapshot) -> String
 
 pub fn acceptance_summary(PipelineResult) -> String
 
+pub fn advanced_rule_catalog() -> Array[String]
+
+pub fn advanced_rule_profile(String) -> AdvancedRuleProfile
+
 pub fn analysis_cache_key(String, PipelineOptions) -> String
 
 pub fn analyze_source(String, String, CheckConfig) -> AnalysisReport
 
 pub fn apply_edits(String, Array[TextEdit]) -> String
 
+pub fn apply_safe_fixes(String, FixPlan) -> String?
+
+pub fn apply_safe_fixes_for_source(String) -> String?
+
 pub fn apply_suppressions(Array[Diagnostic], Array[Suppression]) -> Array[Diagnostic]
 
 pub fn artifacts_with_hash(ProjectSnapshot, String) -> Array[SourceArtifact]
+
+pub fn audit_project(ProjectConfig, Array[ProjectSource]) -> ProjectAudit
+
+pub fn autofix_contract() -> String
+
+pub fn autofix_diagnostics(FixPlan) -> Array[Diagnostic]
 
 pub fn baseline_changes_text(Array[BaselineChange]) -> String
 
@@ -36,6 +50,12 @@ pub fn benchmark_preview(String, Int) -> String
 
 pub fn benchmark_source_bytes() -> Int
 
+pub fn build_release_report(String, String) -> ReleaseReport
+
+pub fn capture_simulation_trace(Module, Array[(String, LogicVector)], TracePolicy) -> SimulationTrace
+
+pub fn capture_source_trace(String, String, Array[(String, LogicVector)], TracePolicy) -> SimulationTrace?
+
 pub fn changed_paths(Array[FileChange]) -> Array[String]
 
 pub fn changes_markdown(Array[FileChange]) -> String
@@ -43,6 +63,8 @@ pub fn changes_markdown(Array[FileChange]) -> String
 pub fn check(Design) -> Array[Diagnostic]
 
 pub fn check_contracts(Design, CheckConfig, Array[Diagnostic]) -> Unit
+
+pub fn check_netlist(NormalizedNetlist) -> Array[NetlistIssue]
 
 pub fn check_port_compatibility(Module, Module, PortConnection) -> PortCompatibility
 
@@ -71,6 +93,16 @@ pub fn contract_issues_markdown(Array[ContractIssue]) -> String
 pub fn coordinate(String, Int, Int) -> SourceCoordinate
 
 pub fn coordinate_text(SourceCoordinate) -> String
+
+pub fn coverage_contract() -> String
+
+pub fn coverage_diagnostics(CoverageReport, CoverageConfig) -> Array[Diagnostic]
+
+pub fn coverage_from_simulation(String, SimulationResult) -> CoverageReport
+
+pub fn coverage_source(String) -> CoverageReport
+
+pub fn coverage_structure(Design, Int) -> CoverageReport
 
 pub fn deduplicate_diagnostics(Array[Diagnostic]) -> Array[Diagnostic]
 
@@ -122,7 +154,17 @@ pub fn duplicate_module_owners(ProjectSnapshot) -> Array[String]
 
 pub fn edits_preserve_module_count(String, Array[TextEdit]) -> Bool
 
+pub fn elaborate_design(Design) -> ElaboratedDesign
+
+pub fn elaborate_source(String) -> ElaboratedDesign
+
+pub fn elaboration_contract() -> String
+
+pub fn elaboration_diagnostics(ElaboratedDesign) -> Array[Diagnostic]
+
 pub fn evaluate_constant(Expr) -> Int?
+
+pub fn evaluate_logic_expr(Expr, Module, Array[SimulationBinding]) -> LogicVector
 
 pub fn evaluate_number(String) -> Int?
 
@@ -150,6 +192,10 @@ pub fn first_error(Array[Diagnostic]) -> Diagnostic?
 
 pub fn first_warning(Array[Diagnostic]) -> Diagnostic?
 
+pub fn formal_check(String, String, Array[(String, LogicVector)], Int, Bool) -> FormalReport
+
+pub fn formal_contract() -> String
+
 pub fn format_assignment(Assignment, FormatOptions, Int) -> String
 
 pub fn format_design(Design, FormatOptions) -> String
@@ -160,6 +206,8 @@ pub fn format_module(Module, FormatOptions) -> String
 
 pub fn format_width(Width, FormatOptions) -> String
 
+pub fn generate_verification_plan(Module, Int) -> VerificationPlan
+
 pub fn hierarchy_paths(Design, String) -> Array[String]
 
 pub fn hierarchy_roots(Design) -> Array[String]
@@ -169,6 +217,10 @@ pub fn hierarchy_tree(Design) -> String
 pub fn index_hits(Design) -> Array[SymbolHit]
 
 pub fn interface_changes(Design, Design) -> Array[String]
+
+pub fn ir_contract() -> String
+
+pub fn ir_diagnostics(IrDesign) -> Array[Diagnostic]
 
 pub fn is_suppressed(Diagnostic, Array[Suppression]) -> Bool
 
@@ -184,6 +236,40 @@ pub fn literal_has_unknown(String) -> Bool
 
 pub fn literal_width(String) -> Int?
 
+pub fn logic_vector_contract() -> String
+
+pub fn lower_ir(Design, String) -> IrDesign
+
+pub fn lower_ir_source(String) -> IrDesign
+
+pub fn lsp_apply_change(LspDocument, LspWorkspaceEdit) -> LspDocument
+
+pub fn lsp_code_actions(LspDocument) -> String
+
+pub fn lsp_completion(LspDocument, String) -> String
+
+pub fn lsp_content_length(String) -> Int
+
+pub fn lsp_contract() -> String
+
+pub fn lsp_definition(LspDocument, String) -> String
+
+pub fn lsp_document_symbols(LspDocument) -> String
+
+pub fn lsp_hover(LspDocument, LspPosition) -> String?
+
+pub fn lsp_hover_json(LspDocument, LspPosition) -> String
+
+pub fn lsp_initialize_result(String, String) -> String
+
+pub fn lsp_jsonrpc_error(String, Int, String) -> String
+
+pub fn lsp_jsonrpc_response(String, String) -> String
+
+pub fn lsp_publish_diagnostics(LspDocument) -> String
+
+pub fn lsp_references(LspDocument, String) -> String
+
 pub fn module_at_line(Design, Int) -> Module?
 
 pub fn module_interface(Module) -> String
@@ -194,7 +280,21 @@ pub fn naming_edits(Design, String) -> Array[TextEdit]
 
 pub fn narrowing_assignments(Module) -> Array[Assignment]
 
+pub fn netlist_contract() -> String
+
+pub fn netlist_issues_json(Array[NetlistIssue]) -> String
+
+pub fn netlist_issues_markdown(Array[NetlistIssue]) -> String
+
+pub fn netlist_summary(NormalizedNetlist) -> String
+
 pub fn new_baseline_findings(Array[BaselineChange]) -> Array[Diagnostic]
+
+pub fn normalize_design(Design) -> Array[NormalizedNetlist]
+
+pub fn normalize_netlist(Module) -> NormalizedNetlist
+
+pub fn normalize_netlist_source(String) -> Array[NormalizedNetlist]
 
 pub fn normalize_source(String) -> String
 
@@ -208,7 +308,11 @@ pub fn parse_check_config(String) -> CheckConfig
 
 pub fn parse_diagnostics(String) -> Array[Diagnostic]
 
+pub fn parse_formal_properties(String) -> Array[FormalProperty]
+
 pub fn parse_outline(String) -> Array[String]
+
+pub fn parse_project_config(String) -> ProjectConfig
 
 pub fn parse_suppressions(String) -> Array[Suppression]
 
@@ -222,17 +326,49 @@ pub fn pipeline_options_stamp(PipelineOptions) -> String
 
 pub fn pipeline_stage_names() -> Array[String]
 
+pub fn preprocess(String, PreprocessOptions) -> PreprocessResult
+
+pub fn preprocess_and_parse(String, PreprocessOptions) -> ParseResult
+
+pub fn preprocess_contract() -> String
+
+pub fn preprocess_default(String) -> PreprocessResult
+
+pub fn preprocess_diagnostics(PreprocessResult) -> Array[Diagnostic]
+
+pub fn preprocess_macro_names(PreprocessResult) -> Array[String]
+
+pub fn preprocess_origin_text(PreprocessResult) -> String
+
+pub fn preprocess_preview(String, Int) -> String
+
 pub fn profile_config(String) -> CheckConfig
 
 pub fn profile_names() -> Array[String]
 
+pub fn project_config_contract() -> String
+
+pub fn project_source(String, String) -> ProjectSource
+
 pub fn public_api_signature(Design) -> String
+
+pub fn query_contract() -> String
+
+pub fn query_predicate_catalog() -> Array[String]
 
 pub fn query_symbols(Design, String) -> Array[SymbolHit]
 
 pub fn query_symbols_text(Design, String) -> String
 
+pub fn release_report_contract() -> String
+
+pub fn release_report_source(String, String) -> ReleaseReport
+
 pub fn render_report(Array[Diagnostic], ReportFormat) -> String
+
+pub fn replay_source_trace(String, SimulationTrace, TracePolicy) -> TraceReplayResult?
+
+pub fn replay_trace(Module, SimulationTrace, TracePolicy) -> TraceReplayResult
 
 pub fn report_format_from_text(String) -> ReportFormat
 
@@ -242,15 +378,41 @@ pub fn rule_catalog() -> String
 
 pub fn rule_dashboard(Array[Diagnostic]) -> String
 
+pub fn rule_pack_contract() -> String
+
+pub fn rule_pack_source(String, RulePackConfig) -> RulePackResult
+
 pub fn run_benchmark(BenchmarkFixture, Int) -> BenchmarkResult
 
 pub fn run_default_pipeline(String) -> PipelineResult
 
+pub fn run_design_query(Design, DesignQuery) -> QueryResult
+
 pub fn run_pipeline(String, PipelineOptions) -> PipelineResult
+
+pub fn run_rule_pack(Design, RulePackConfig) -> RulePackResult
+
+pub fn run_source_query(String, DesignQuery) -> QueryResult
+
+pub fn run_source_verification(String, String, Int) -> VerificationReport?
+
+pub fn run_verification_plan(Module, VerificationPlan) -> VerificationReport
 
 pub fn run_workspace(Array[SourceUnit], PipelineOptions) -> WorkspaceResult
 
 pub fn severity_from_text(String) -> Severity?
+
+pub fn signal_cone(Module, String, Int) -> Array[String]
+
+pub fn signal_cone_report(Module, String, Int) -> String
+
+pub fn signal_sources(Module, String) -> Array[String]
+
+pub fn simulate_module(Module, Array[(String, LogicVector)], Int) -> SimulationResult
+
+pub fn simulate_source(String, String, Array[(String, LogicVector)], Int) -> SimulationResult?
+
+pub fn simulation_vector_table() -> String
 
 pub fn snapshot_is_clean(ProjectSnapshot) -> Bool
 
@@ -274,6 +436,10 @@ pub fn span_text(String, Span) -> String
 
 pub fn status_label(Array[Diagnostic]) -> String
 
+pub fn suggest_fixes(String, Array[Diagnostic]) -> FixPlan
+
+pub fn suggest_fixes_for_source(String) -> FixPlan
+
 pub fn suppressed_count(Array[Diagnostic], Array[Suppression]) -> Int
 
 pub fn symbol_coordinates(String, Design, String) -> Array[SourceCoordinate]
@@ -282,11 +448,43 @@ pub fn syntax_diagnostics(String) -> Array[Diagnostic]
 
 pub fn syntax_is_safe(String) -> Bool
 
+pub fn timing_analyze(Design, TimingConfig) -> TimingReport
+
+pub fn timing_contract() -> String
+
+pub fn timing_diagnostics(TimingReport, TimingConfig) -> Array[Diagnostic]
+
+pub fn timing_source(String, TimingConfig) -> TimingReport
+
 pub fn token_at(String, Int, Int) -> Token?
 
 pub fn token_dump(String) -> String
 
 pub fn token_occurrences(String, String) -> Array[Span]
+
+pub fn trace_archive_difference(TraceArchive, TraceArchive) -> Array[String]
+
+pub fn trace_archive_is_compatible(TraceArchive, TraceArchive) -> Bool
+
+pub fn trace_archive_summary(TraceArchive) -> String
+
+pub fn trace_contract() -> String
+
+pub fn trace_cycle_span(SimulationTrace) -> (Int, Int)
+
+pub fn trace_difference_summary(TraceReplayResult) -> String
+
+pub fn trace_event_count_for_signal(SimulationTrace, String) -> Int
+
+pub fn trace_event_text(TraceEvent) -> String
+
+pub fn trace_regression_summary(TraceArchive, TraceArchive, TracePolicy) -> String
+
+pub fn trace_replay_contract(TracePolicy) -> String
+
+pub fn trace_statistics_json(TraceStatistics) -> String
+
+pub fn trace_statistics_text(TraceStatistics) -> String
 
 pub fn trailing_whitespace_fixes(String) -> EditSet?
 
@@ -296,7 +494,13 @@ pub fn uppercase_port_edit(Signal, String) -> TextEdit?
 
 pub fn validate_design(Design) -> Array[SyntaxIssue]
 
+pub fn validate_fix(String, String) -> Bool
+
 pub fn validate_syntax(String) -> SyntaxReport
+
+pub fn verification_contract() -> String
+
+pub fn verification_plan_text(VerificationPlan) -> String
 
 pub fn warning_artifacts(ProjectSnapshot) -> Array[SourceArtifact]
 
@@ -307,6 +511,16 @@ pub fn width_policy_summary(Module) -> String
 // Errors
 
 // Types and methods
+pub struct AdvancedRuleProfile {
+  name : String
+  description : String
+  codes : Array[String]
+  default_severity : Severity
+  checks_latches : Bool
+  checks_clocking : Bool
+  checks_interfaces : Bool
+}
+
 pub struct AlwaysBlock {
   sensitivity : Array[Sensitivity]
   body : String
@@ -428,6 +642,46 @@ pub struct ContractIssue {
   subject : String
 }
 
+pub struct CoverageConfig {
+  line_goal : Int
+  branch_goal : Int
+  toggle_goal : Int
+  include_info : Bool
+}
+pub fn CoverageConfig::default() -> Self
+pub fn CoverageConfig::with_goals(Self, Int, Int, Int) -> Self
+
+pub struct CoveragePoint {
+  id : String
+  kind : String
+  module_name : String
+  line : Int
+  label : String
+  hit_count : Int
+  goal : Int
+}
+
+pub struct CoverageReport {
+  points : Array[CoveragePoint]
+  source_lines : Int
+  covered_lines : Int
+  covered_branches : Int
+  total_branches : Int
+  covered_toggles : Int
+  total_toggles : Int
+}
+pub fn CoverageReport::branch_percent(Self) -> Int
+pub fn CoverageReport::covered_points(Self) -> Int
+pub fn CoverageReport::line_percent(Self) -> Int
+pub fn CoverageReport::mark(Self, Array[String]) -> Self
+pub fn CoverageReport::mark_all(Self) -> Self
+pub fn CoverageReport::meets(Self, CoverageConfig) -> Bool
+pub fn CoverageReport::to_json(Self) -> String
+pub fn CoverageReport::to_markdown(Self) -> String
+pub fn CoverageReport::toggle_percent(Self) -> Int
+pub fn CoverageReport::total_points(Self) -> Int
+pub fn CoverageReport::uncovered(Self) -> Array[CoveragePoint]
+
 pub struct DataflowFact {
   name : String
   state : SignalState
@@ -485,6 +739,19 @@ pub struct DesignMetrics {
 }
 pub fn DesignMetrics::to_json(Self) -> String
 
+pub struct DesignQuery {
+  predicates : Array[QueryPredicate]
+  match_all : Bool
+  include_signals : Bool
+  include_instances : Bool
+  max_results : Int
+}
+pub fn DesignQuery::any_predicate(Self) -> Self
+pub fn DesignQuery::empty() -> Self
+pub fn DesignQuery::limit(Self, Int) -> Self
+pub fn DesignQuery::modules_only(Self) -> Self
+pub fn DesignQuery::with_predicate(Self, QueryPredicate) -> Self
+
 pub struct Diagnostic {
   code : String
   severity : Severity
@@ -523,6 +790,62 @@ pub struct EditSet {
 pub fn EditSet::apply(Self, String) -> String?
 pub fn EditSet::from_edits(String, Array[SourceEdit]) -> Self?
 
+pub struct ElaboratedConnection {
+  port : String
+  expression : String
+  expression_width : Int?
+  port_width : Int?
+  compatible : Bool
+}
+
+pub struct ElaboratedDesign {
+  modules : Array[ElaboratedModule]
+  issues : Array[ElaborationIssue]
+  roots : Array[String]
+  unresolved : Array[String]
+  depth : Int
+}
+pub fn ElaboratedDesign::error_count(Self) -> Int
+pub fn ElaboratedDesign::find_path(Self, String) -> ElaboratedModule?
+pub fn ElaboratedDesign::instances_of(Self, String) -> Array[ElaboratedInstance]
+pub fn ElaboratedDesign::is_clean(Self) -> Bool
+pub fn ElaboratedDesign::module_paths(Self) -> Array[String]
+pub fn ElaboratedDesign::to_json(Self) -> String
+pub fn ElaboratedDesign::to_markdown(Self) -> String
+pub fn ElaboratedDesign::warning_count(Self) -> Int
+
+pub struct ElaboratedInstance {
+  path : String
+  instance_name : String
+  module_name : String
+  parameters : Array[ElaboratedParameter]
+  connections : Array[ElaboratedConnection]
+  resolved : Bool
+}
+
+pub struct ElaboratedModule {
+  name : String
+  path : String
+  parameters : Array[ElaboratedParameter]
+  instances : Array[ElaboratedInstance]
+  port_widths : Array[(String, Int?)]
+}
+
+pub struct ElaboratedParameter {
+  name : String
+  text : String
+  value : Int?
+  source : String
+}
+
+pub struct ElaborationIssue {
+  code : String
+  severity : Severity
+  path : String
+  message : String
+  line : Int
+}
+
 pub enum Expr {
   Name(String)
   Number(String)
@@ -554,6 +877,68 @@ pub struct FileChange {
   current_hash : String?
 }
 
+pub enum FixKind {
+  FixWhitespace
+  FixSignalName
+  FixMissingDefault
+  FixWidthAnnotation
+  FixSensitivity
+  FixUnknown
+} derive(Eq)
+
+pub struct FixPlan {
+  source_hash : String
+  suggestions : Array[FixSuggestion]
+  applicable : Int
+  rejected : Int
+}
+pub fn FixPlan::apply_and_validate(Self, String) -> String?
+pub fn FixPlan::review_required(Self) -> Array[FixSuggestion]
+pub fn FixPlan::safe(Self) -> Array[FixSuggestion]
+pub fn FixPlan::summary(Self) -> String
+pub fn FixPlan::to_json(Self) -> String
+pub fn FixPlan::to_markdown(Self) -> String
+
+pub struct FixSuggestion {
+  id : String
+  code : String
+  kind : FixKind
+  message : String
+  edits : Array[SourceEdit]
+  confidence : Int
+  safe : Bool
+}
+
+pub struct FormalProperty {
+  name : String
+  kind : PropertyKind
+  clock : String?
+  antecedent : String
+  consequent : String
+  source_line : Int
+  explicit : Bool
+}
+
+pub struct FormalReport {
+  properties : Array[FormalProperty]
+  proven : Array[String]
+  violated : Array[FormalViolation]
+  unknown : Array[String]
+  bound : Int
+}
+pub fn FormalReport::diagnostics(Self) -> Array[Diagnostic]
+pub fn FormalReport::is_proven(Self) -> Bool
+pub fn FormalReport::property(Self, String) -> FormalProperty?
+pub fn FormalReport::to_json(Self) -> String
+pub fn FormalReport::to_markdown(Self) -> String
+
+pub struct FormalViolation {
+  property_name : String
+  iteration : Int
+  message : String
+  signal : String?
+}
+
 pub struct FormatOptions {
   indent : Int
   spaces_inside_ranges : Bool
@@ -561,6 +946,193 @@ pub struct FormatOptions {
   trailing_newline : Bool
 }
 pub fn FormatOptions::default() -> Self
+
+pub struct IrDesign {
+  modules : Array[IrModule]
+  source_hash : String
+  optimized : Bool
+  passes : Array[String]
+}
+pub fn IrDesign::constant_fold(Self) -> Self
+pub fn IrDesign::find_module(Self, String) -> IrModule?
+pub fn IrDesign::ir_dead_signal_names(Self) -> Array[String]
+pub fn IrDesign::remove_comments(Self) -> Self
+pub fn IrDesign::to_json(Self) -> String
+pub fn IrDesign::to_text(Self) -> String
+
+pub enum IrExpr {
+  IrConstant(String)
+  IrSignal(String)
+  IrUnary(String, IrExpr)
+  IrBinary(IrExpr, String, IrExpr)
+  IrMux(IrExpr, IrExpr, IrExpr)
+  IrConcat(Array[IrExpr])
+  IrRepeat(Int, IrExpr)
+  IrSelect(IrExpr, IrExpr, IrExpr?)
+  IrCall(String, Array[IrExpr])
+  IrUnknown(String)
+} derive(Eq)
+pub fn IrExpr::ir_text(Self) -> String
+
+pub enum IrInstruction {
+  IrAssign(String, IrExpr, Bool)
+  IrAssume(IrExpr)
+  IrAssert(IrExpr)
+  IrBranch(IrExpr, Array[IrInstruction], Array[IrInstruction])
+  IrInstance(String, String, Array[(String, IrExpr)])
+  IrComment(String)
+} derive(Eq)
+
+pub struct IrModule {
+  name : String
+  parameters : Array[Parameter]
+  ports : Array[Signal]
+  signals : Array[Signal]
+  instructions : Array[IrInstruction]
+  dependencies : Array[String]
+}
+pub fn IrModule::instruction_count(Self) -> Int
+pub fn IrModule::signal_names(Self) -> Array[String]
+pub fn IrModule::to_text(Self) -> String
+pub fn IrModule::uses(Self, String) -> Bool
+
+pub enum LogicBit {
+  LogicZero
+  LogicOne
+  LogicUnknown
+  LogicHighZ
+} derive(Eq)
+pub fn LogicBit::and_bit(Self, Self) -> Self
+pub fn LogicBit::from_char(Char) -> Self
+pub fn LogicBit::is_high_z(Self) -> Bool
+pub fn LogicBit::is_known(Self) -> Bool
+pub fn LogicBit::merge(Self, Self) -> Self
+pub fn LogicBit::not(Self) -> Self
+pub fn LogicBit::or_bit(Self, Self) -> Self
+pub fn LogicBit::to_char(Self) -> Char
+pub fn LogicBit::xor_bit(Self, Self) -> Self
+
+pub struct LogicVector {
+  bits : Array[LogicBit]
+}
+pub fn LogicVector::add(Self, Self) -> Self
+pub fn LogicVector::and_bits(Self, Self) -> Self
+pub fn LogicVector::bit(Self, Int) -> LogicBit?
+pub fn LogicVector::case_equal(Self, Self) -> LogicBit
+pub fn LogicVector::concat(Array[Self]) -> Self
+pub fn LogicVector::count_known(Self) -> Int
+pub fn LogicVector::count_ones(Self) -> Int
+pub fn LogicVector::equal(Self, Self) -> LogicBit
+pub fn LogicVector::from_bits(Array[LogicBit]) -> Self
+pub fn LogicVector::from_int(Int, Int) -> Self
+pub fn LogicVector::from_literal(String) -> Self
+pub fn LogicVector::from_text(String) -> Self
+pub fn LogicVector::hamming_distance(Self, Self) -> Int
+pub fn LogicVector::has_high_z(Self) -> Bool
+pub fn LogicVector::has_unknown(Self) -> Bool
+pub fn LogicVector::high_z(Int) -> Self
+pub fn LogicVector::is_empty(Self) -> Bool
+pub fn LogicVector::is_known(Self) -> Bool
+pub fn LogicVector::mask(Self, Self) -> Self
+pub fn LogicVector::mux(LogicBit, Self, Self) -> Self
+pub fn LogicVector::not(Self) -> Self
+pub fn LogicVector::ones(Int) -> Self
+pub fn LogicVector::or_bits(Self, Self) -> Self
+pub fn LogicVector::reduce_and(Self) -> LogicBit
+pub fn LogicVector::reduce_or(Self) -> LogicBit
+pub fn LogicVector::reduce_xor(Self) -> LogicBit
+pub fn LogicVector::repeat(Self, Int) -> Self
+pub fn LogicVector::resize(Self, Int, Bool) -> Self
+pub fn LogicVector::shift_left(Self, Int) -> Self
+pub fn LogicVector::shift_right(Self, Int, Bool) -> Self
+pub fn LogicVector::slice(Self, Int, Int) -> Self
+pub fn LogicVector::sub(Self, Self) -> Self
+pub fn LogicVector::to_binary(Self) -> String
+pub fn LogicVector::to_hex(Self) -> String
+pub fn LogicVector::to_json(Self) -> String
+pub fn LogicVector::to_signed(Self) -> Int?
+pub fn LogicVector::to_text(Self) -> String
+pub fn LogicVector::to_uint(Self) -> Int?
+pub fn LogicVector::truthy(Self) -> LogicBit
+pub fn LogicVector::unknown(Int) -> Self
+pub fn LogicVector::width(Self) -> Int
+pub fn LogicVector::with_bit(Self, Int, LogicBit) -> Self
+pub fn LogicVector::xor_bits(Self, Self) -> Self
+pub fn LogicVector::zero(Int) -> Self
+
+pub struct LspDiagnostic {
+  range : LspRange
+  severity : LspSeverity
+  code : String
+  message : String
+  source : String
+}
+
+pub struct LspDocument {
+  uri : String
+  version : Int
+  source : String
+  design : Design
+  diagnostics : Array[LspDiagnostic]
+}
+pub fn LspDocument::diagnostic_json(Self) -> String
+pub fn LspDocument::open(String, Int, String) -> Self
+pub fn LspDocument::refresh(Self, String, Int) -> Self
+pub fn LspDocument::symbols(Self) -> Array[LspSymbol]
+pub fn LspDocument::symbols_json(Self) -> String
+
+pub struct LspLocation {
+  uri : String
+  range : LspRange
+}
+pub fn LspLocation::new(String, LspRange) -> Self
+
+pub struct LspPosition {
+  line : Int
+  character : Int
+}
+
+pub struct LspRange {
+  start : LspPosition
+  end : LspPosition
+}
+
+pub enum LspSeverity {
+  LspError
+  LspWarning
+  LspInformation
+} derive(Eq)
+
+pub struct LspSymbol {
+  name : String
+  detail : String
+  kind : LspSymbolKind
+  range : LspRange
+  selection_range : LspRange
+  children : Array[LspSymbol]
+}
+
+pub enum LspSymbolKind {
+  LspModule
+  LspPort
+  LspSignal
+  LspInstance
+  LspAssignment
+} derive(Eq)
+
+pub struct LspWorkspaceEdit {
+  uri : String
+  range : LspRange
+  replacement : String
+}
+pub fn LspWorkspaceEdit::new(String, LspRange, String) -> Self
+
+pub struct MacroDefinition {
+  name : String
+  parameters : Array[String]
+  body : String
+  defined_line : Int
+}
 
 pub struct Module {
   name : String
@@ -627,6 +1199,51 @@ pub enum NetType {
   GenerateVariable
   UnknownNet(String)
 } derive(Eq)
+
+pub struct NetlistCell {
+  name : String
+  kind : String
+  ports : Array[NetlistPort]
+  parameters : Array[(String, String)]
+}
+
+pub struct NetlistIssue {
+  code : String
+  severity : Severity
+  message : String
+  object_name : String
+}
+
+pub struct NetlistNet {
+  name : String
+  width : Int
+  drivers : Array[String]
+  users : Array[String]
+  is_port : Bool
+}
+
+pub struct NetlistPort {
+  name : String
+  direction : String
+  width : Int
+  net : String
+}
+
+pub struct NormalizedNetlist {
+  name : String
+  ports : Array[NetlistPort]
+  nets : Array[NetlistNet]
+  cells : Array[NetlistCell]
+  assigns : Array[(String, String)]
+}
+pub fn NormalizedNetlist::cell(Self, String) -> NetlistCell?
+pub fn NormalizedNetlist::cell_count(Self) -> Int
+pub fn NormalizedNetlist::edge_count(Self) -> Int
+pub fn NormalizedNetlist::net(Self, String) -> NetlistNet?
+pub fn NormalizedNetlist::signal_count(Self) -> Int
+pub fn NormalizedNetlist::to_dot(Self) -> String
+pub fn NormalizedNetlist::to_json(Self) -> String
+pub fn NormalizedNetlist::to_verilog(Self) -> String
 
 pub struct Parameter {
   name : String
@@ -734,6 +1351,116 @@ pub struct Position {
 }
 pub fn Position::new(Int, Int) -> Self
 
+pub struct PreprocessInclude {
+  path : String
+  source : String
+}
+
+pub struct PreprocessMessage {
+  code : String
+  message : String
+  line : Int
+  column : Int
+  is_error : Bool
+}
+
+pub struct PreprocessOptions {
+  defines : Array[String]
+  includes : Array[PreprocessInclude]
+  include_paths : Array[String]
+  preserve_directives : Bool
+  emit_line_markers : Bool
+  max_expansions : Int
+  max_include_depth : Int
+}
+pub fn PreprocessOptions::default() -> Self
+pub fn PreprocessOptions::with_define(Self, String) -> Self
+pub fn PreprocessOptions::with_directive_markers(Self, Bool, Bool) -> Self
+pub fn PreprocessOptions::with_include(Self, String, String) -> Self
+pub fn PreprocessOptions::with_include_path(Self, String) -> Self
+pub fn PreprocessOptions::with_limits(Self, Int, Int) -> Self
+
+pub struct PreprocessOrigin {
+  generated_line : Int
+  source_path : String
+  source_line : Int
+}
+
+pub struct PreprocessResult {
+  source : String
+  macros : Array[MacroDefinition]
+  messages : Array[PreprocessMessage]
+  origins : Array[PreprocessOrigin]
+  included_paths : Array[String]
+  emitted_lines : Int
+  skipped_lines : Int
+  expansion_count : Int
+}
+pub fn PreprocessResult::errors(Self) -> Array[PreprocessMessage]
+pub fn PreprocessResult::is_clean(Self) -> Bool
+pub fn PreprocessResult::origin_for_line(Self, Int) -> PreprocessOrigin?
+pub fn PreprocessResult::to_json(Self) -> String
+pub fn PreprocessResult::to_markdown(Self) -> String
+pub fn PreprocessResult::warnings(Self) -> Array[PreprocessMessage]
+
+pub struct ProjectAudit {
+  config : ProjectConfig
+  sources : Array[ProjectSource]
+  diagnostics : Array[Diagnostic]
+  metrics : ProjectMetrics
+  elaborated : ElaboratedDesign?
+  timing : TimingReport?
+  coverage : CoverageReport?
+}
+pub fn ProjectAudit::failed_paths(Self) -> Array[String]
+pub fn ProjectAudit::is_clean(Self) -> Bool
+pub fn ProjectAudit::status_line(Self) -> String
+pub fn ProjectAudit::to_json(Self) -> String
+pub fn ProjectAudit::to_markdown(Self) -> String
+
+pub struct ProjectConfig {
+  mut name : String
+  mut profile : String
+  defines : Array[String]
+  include_paths : Array[String]
+  source_paths : Array[String]
+  exclude_paths : Array[String]
+  rules : Array[ProjectRulePolicy]
+  mut max_diagnostics : Int
+  mut deny_warnings : Bool
+  mut run_preprocessor : Bool
+  mut run_hierarchy : Bool
+  mut run_timing : Bool
+  mut run_coverage : Bool
+}
+pub fn ProjectConfig::accepts_path(Self, String) -> Bool
+pub fn ProjectConfig::default() -> Self
+pub fn ProjectConfig::to_check_config(Self) -> CheckConfig
+pub fn ProjectConfig::to_json(Self) -> String
+pub fn ProjectConfig::to_text(Self) -> String
+pub fn ProjectConfig::with_profile(Self, String) -> Self
+
+pub struct ProjectMetrics {
+  files : Int
+  enabled_files : Int
+  source_lines : Int
+  modules : Int
+  signals : Int
+  assignments : Int
+  instances : Int
+  errors : Int
+  warnings : Int
+  critical_delay : Int
+  hierarchy_depth : Int
+}
+
+pub struct ProjectRulePolicy {
+  code : String
+  enabled : Bool
+  severity : Severity?
+  reason : String
+}
+
 pub struct ProjectSnapshot {
   name : String
   artifacts : Array[SourceArtifact]
@@ -752,6 +1479,13 @@ pub fn ProjectSnapshot::sorted_artifacts(Self) -> Array[SourceArtifact]
 pub fn ProjectSnapshot::status(Self) -> ProjectStatus
 pub fn ProjectSnapshot::to_json(Self) -> String
 
+pub struct ProjectSource {
+  path : String
+  source : String
+  enabled : Bool
+  language : String
+}
+
 pub struct ProjectStatus {
   name : String
   files : Int
@@ -764,6 +1498,89 @@ pub struct ProjectStatus {
 }
 pub fn ProjectStatus::to_json(Self) -> String
 pub fn ProjectStatus::to_text(Self) -> String
+
+pub enum PropertyKind {
+  PropertyAlways
+  PropertyNever
+  PropertyImplies
+  PropertyEventually
+  PropertyStable
+  PropertyUnknown
+} derive(Eq)
+
+pub struct QueryMatch {
+  module_name : String
+  kind : String
+  name : String
+  detail : String
+  line : Int
+}
+
+pub enum QueryPredicate {
+  QueryModuleEquals(String)
+  QueryModuleContains(String)
+  QuerySignalContains(String)
+  QuerySignalWidthAtLeast(Int)
+  QuerySignalWidthEquals(Int)
+  QueryHasPort(String)
+  QueryHasAssignment(String)
+  QueryHasInstance(String)
+  QueryHasAlways(AlwaysKind)
+  QueryExpressionContains(String)
+  QueryDiagnosticCode(String)
+  QueryPortCountAtLeast(Int)
+} derive(Eq)
+pub fn QueryPredicate::module_equals(String) -> Self
+pub fn QueryPredicate::signal_width_at_least(Int) -> Self
+
+pub struct QueryResult {
+  matches : Array[QueryMatch]
+  predicates : Array[String]
+  scanned_modules : Int
+  scanned_signals : Int
+  truncated : Bool
+}
+pub fn QueryResult::count(Self) -> Int
+pub fn QueryResult::to_json(Self) -> String
+pub fn QueryResult::to_markdown(Self) -> String
+pub fn QueryResult::to_text(Self) -> String
+
+pub struct ReleaseArtifact {
+  name : String
+  format : String
+  status : String
+  summary : String
+  payload : String
+}
+
+pub struct ReleaseGate {
+  name : String
+  threshold : Int
+  actual : Int
+  passed : Bool
+  detail : String
+}
+pub fn ReleaseGate::is_passed(Self) -> Bool
+
+pub struct ReleaseReport {
+  project : String
+  source_hash : String
+  source_lines : Int
+  modules : Int
+  gates : Array[ReleaseGate]
+  artifacts : Array[ReleaseArtifact]
+  diagnostics : Array[Diagnostic]
+  netlist_issues : Int
+  benchmark : BenchmarkResult
+}
+pub fn ReleaseReport::error_count(Self) -> Int
+pub fn ReleaseReport::failed_gates(Self) -> Int
+pub fn ReleaseReport::is_ready(Self) -> Bool
+pub fn ReleaseReport::passed_gates(Self) -> Int
+pub fn ReleaseReport::summary(Self) -> String
+pub fn ReleaseReport::to_json(Self) -> String
+pub fn ReleaseReport::to_markdown(Self) -> String
+pub fn ReleaseReport::warning_count(Self) -> Int
 
 pub enum ReportFormat {
   TextReport
@@ -780,6 +1597,29 @@ pub struct RuleCount {
   warnings : Int
   infos : Int
 }
+
+pub struct RulePackConfig {
+  profile : String
+  enabled_codes : Array[String]
+  disabled_codes : Array[String]
+  max_findings : Int
+  include_info : Bool
+}
+pub fn RulePackConfig::default() -> Self
+pub fn RulePackConfig::with_info(Self, Bool) -> Self
+pub fn RulePackConfig::with_max_findings(Self, Int) -> Self
+
+pub struct RulePackResult {
+  diagnostics : Array[Diagnostic]
+  rules_run : Array[String]
+  suppressed : Int
+  modules : Int
+}
+pub fn RulePackResult::error_count(Self) -> Int
+pub fn RulePackResult::has_blocking_errors(Self) -> Bool
+pub fn RulePackResult::to_json(Self) -> String
+pub fn RulePackResult::to_markdown(Self) -> String
+pub fn RulePackResult::warning_count(Self) -> Int
 
 pub struct RuleSetting {
   code : String
@@ -820,6 +1660,58 @@ pub enum SignalState {
   MaybeDrivenState
   UnusedState
 } derive(Eq)
+
+pub struct SimulationBinding {
+  name : String
+  value : LogicVector
+  source : String
+}
+
+pub struct SimulationResult {
+  module_name : String
+  bindings : Array[SimulationBinding]
+  steps : Array[SimulationStep]
+  stable : Bool
+  oscillating : Bool
+  max_iterations : Int
+}
+pub fn SimulationResult::changed_over_time(Self, String) -> Int
+pub fn SimulationResult::output_values(Self) -> Array[SimulationBinding]
+pub fn SimulationResult::status_line(Self) -> String
+pub fn SimulationResult::to_json(Self) -> String
+pub fn SimulationResult::to_markdown(Self) -> String
+pub fn SimulationResult::value(Self, String) -> LogicVector?
+
+pub struct SimulationStep {
+  iteration : Int
+  changed_signals : Array[String]
+  values : Array[SimulationBinding]
+  stable : Bool
+}
+
+pub struct SimulationTrace {
+  module_name : String
+  events : Array[TraceEvent]
+  inputs : Array[(String, LogicVector)]
+  cycles : Int
+  stable : Bool
+  oscillating : Bool
+}
+pub fn SimulationTrace::changed_signals(Self) -> Array[String]
+pub fn SimulationTrace::cycle_events(Self, Int) -> Array[TraceEvent]
+pub fn SimulationTrace::event_at(Self, Int, String) -> TraceEvent?
+pub fn SimulationTrace::events_of_kind(Self, TraceEventKind) -> Array[TraceEvent]
+pub fn SimulationTrace::first_event(Self) -> TraceEvent?
+pub fn SimulationTrace::has_unknown(Self) -> Bool
+pub fn SimulationTrace::last_value(Self, String) -> LogicVector?
+pub fn SimulationTrace::select(Self, TraceSelector) -> Array[TraceEvent]
+pub fn SimulationTrace::signal_activity(Self) -> String
+pub fn SimulationTrace::signal_values(Self, String) -> Array[LogicVector]
+pub fn SimulationTrace::statistics(Self) -> TraceStatistics
+pub fn SimulationTrace::to_csv(Self) -> String
+pub fn SimulationTrace::to_json(Self) -> String
+pub fn SimulationTrace::to_text(Self) -> String
+pub fn SimulationTrace::to_vcd_like(Self) -> String
 
 pub struct SourceArtifact {
   path : String
@@ -935,6 +1827,56 @@ pub struct TextEdit {
   reason : String
 }
 
+pub struct TimingConfig {
+  gate_delay : Int
+  register_delay : Int
+  max_path_length : Int
+  warn_fanout : Int
+}
+pub fn TimingConfig::default() -> Self
+pub fn TimingConfig::with_delays(Self, Int, Int) -> Self
+
+pub struct TimingEdge {
+  from : String
+  to : String
+  kind : String
+  weight : Int
+}
+
+pub struct TimingNode {
+  id : String
+  module_name : String
+  signal_name : String
+  width : Int
+  is_input : Bool
+  is_output : Bool
+  is_register : Bool
+  level : Int
+}
+
+pub struct TimingPath {
+  start : String
+  finish : String
+  nodes : Array[String]
+  delay : Int
+  has_cycle : Bool
+}
+
+pub struct TimingReport {
+  nodes : Array[TimingNode]
+  edges : Array[TimingEdge]
+  paths : Array[TimingPath]
+  critical_delay : Int
+  max_fanout : Int
+  cycles : Array[String]
+}
+pub fn TimingReport::critical_path(Self) -> TimingPath?
+pub fn TimingReport::fanout(Self, String) -> Int
+pub fn TimingReport::is_acyclic(Self) -> Bool
+pub fn TimingReport::node(Self, String) -> TimingNode?
+pub fn TimingReport::to_json(Self) -> String
+pub fn TimingReport::to_markdown(Self) -> String
+
 pub struct Token {
   text : String
   line : Int
@@ -952,6 +1894,160 @@ pub enum TokenKind {
   PunctuationToken
   DirectiveToken
 } derive(Eq)
+
+pub struct TraceArchive {
+  name : String
+  traces : Array[SimulationTrace]
+  metadata : Array[(String, String)]
+}
+pub fn TraceArchive::add_trace(Self, SimulationTrace) -> Self
+pub fn TraceArchive::cycle_count(Self) -> Int
+pub fn TraceArchive::empty(String) -> Self
+pub fn TraceArchive::event_count(Self) -> Int
+pub fn TraceArchive::event_rows(Self, TraceSelector) -> Array[String]
+pub fn TraceArchive::find_module(Self, String) -> Array[SimulationTrace]
+pub fn TraceArchive::is_stable(Self) -> Bool
+pub fn TraceArchive::merge(Self, Self) -> Self
+pub fn TraceArchive::module_names(Self) -> Array[String]
+pub fn TraceArchive::statistics(Self) -> TraceStatistics
+pub fn TraceArchive::to_csv(Self, TraceSelector) -> String
+pub fn TraceArchive::to_json(Self) -> String
+pub fn TraceArchive::to_markdown(Self) -> String
+pub fn TraceArchive::to_statistics_json(Self) -> String
+pub fn TraceArchive::unknown_trace_count(Self) -> Int
+pub fn TraceArchive::validate(Self) -> Array[String]
+pub fn TraceArchive::with_metadata(Self, String, String) -> Self
+
+pub struct TraceDifference {
+  cycle : Int
+  signal : String
+  expected : LogicVector?
+  actual : LogicVector?
+  reason : String
+}
+
+pub struct TraceEvent {
+  cycle : Int
+  signal : String
+  value : LogicVector
+  kind : TraceEventKind
+  source : String
+}
+
+pub enum TraceEventKind {
+  TraceInput
+  TraceOutput
+  TraceInternal
+  TraceState
+  TraceUnknown
+} derive(Eq)
+
+pub struct TracePolicy {
+  max_cycles : Int
+  include_internal : Bool
+  stop_on_stable : Bool
+  unknown_is_error : Bool
+  compare_inputs : Bool
+}
+pub fn TracePolicy::bounded(Self, Int) -> Self
+pub fn TracePolicy::default() -> Self
+pub fn TracePolicy::strict(Self) -> Self
+
+pub struct TraceReplayResult {
+  module_name : String
+  compared_events : Int
+  differences : Array[TraceDifference]
+  passed : Bool
+  expected_cycles : Int
+  actual_cycles : Int
+}
+pub fn TraceReplayResult::difference_count(Self) -> Int
+pub fn TraceReplayResult::difference_signals(Self) -> Array[String]
+pub fn TraceReplayResult::is_clean(Self) -> Bool
+pub fn TraceReplayResult::to_json(Self) -> String
+pub fn TraceReplayResult::to_markdown(Self) -> String
+
+pub struct TraceSelector {
+  signal_contains : String
+  kind : TraceEventKind?
+  first_cycle : Int
+  last_cycle : Int
+  include_unknown : Bool
+}
+pub fn TraceSelector::all() -> Self
+pub fn TraceSelector::cycles(Self, Int, Int) -> Self
+pub fn TraceSelector::from_kind_text(String) -> Self
+pub fn TraceSelector::kind(Self, TraceEventKind) -> Self
+pub fn TraceSelector::signal(Self, String) -> Self
+pub fn TraceSelector::without_unknown(Self) -> Self
+
+pub struct TraceStatistics {
+  event_count : Int
+  input_count : Int
+  output_count : Int
+  internal_count : Int
+  unknown_count : Int
+  cycle_count : Int
+  unique_signals : Int
+}
+
+pub enum VectorMode {
+  ZeroVector
+  OnesVector
+  WalkingOneVector
+  WalkingZeroVector
+  AlternatingVector
+  BoundaryVector
+} derive(Eq)
+
+pub struct VerificationObservation {
+  vector_name : String
+  status : String
+  checked_outputs : Int
+  mismatches : Array[String]
+  stable : Bool
+  iterations : Int
+}
+
+pub struct VerificationPlan {
+  module_name : String
+  requirements : Array[VerificationRequirement]
+  vectors : Array[VerificationVector]
+  max_iterations : Int
+}
+pub fn VerificationPlan::add_requirement(Self, String, String, String, Int) -> Self
+pub fn VerificationPlan::add_vector(Self, VerificationVector) -> Self
+pub fn VerificationPlan::empty(String) -> Self
+
+pub struct VerificationReport {
+  module_name : String
+  observations : Array[VerificationObservation]
+  requirements : Array[VerificationRequirement]
+  passed : Int
+  failed : Int
+  unknown : Int
+}
+pub fn VerificationReport::coverage_percent(Self) -> Int
+pub fn VerificationReport::is_healthy(Self) -> Bool
+pub fn VerificationReport::to_json(Self) -> String
+pub fn VerificationReport::to_markdown(Self) -> String
+pub fn VerificationReport::total(Self) -> Int
+
+pub struct VerificationRequirement {
+  id : String
+  target : String
+  description : String
+  priority : Int
+  covered : Bool
+}
+
+pub struct VerificationVector {
+  name : String
+  mode : VectorMode
+  inputs : Array[(String, LogicVector)]
+  expected : Array[(String, LogicVector)]
+  tags : Array[String]
+}
 
 pub struct Width {
   msb : Int
