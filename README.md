@@ -132,8 +132,10 @@ GitHub Actions runs the current stable MoonBit installer on Ubuntu, macOS, and
 Windows. It verifies formatting, generated interfaces, all-target checks,
 all-target tests, native build/test smoke coverage, and the production source
 inventory. A separate manual/tag workflow validates and publishes the package
-with moon publish --frozen when the repository Mooncakes secret is configured.
-See .github/workflows/moon.yml and .github/workflows/publish.yml.
+with `moon publish` using the repository's Mooncakes credentials secret. The
+workflow writes the credentials only for the publish step and removes them
+afterwards. See `.github/workflows/moon.yml` and
+`.github/workflows/publish.yml`.
 
 ## License
 

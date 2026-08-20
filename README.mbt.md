@@ -83,7 +83,9 @@ moon run cmd --target native -- --benchmark=1000
 ~~~
 
 The measured command, fixture sizes, toolchain, and machine context are
-recorded in BENCHMARKS.md. Measurements are environment-specific observations.
+recorded in BENCHMARKS.md. The current run observed 74, 72, and 70 tokens/ms
+for the small, medium, and large fixtures respectively. Measurements are
+environment-specific observations.
 
 The current local inventory contains 20,040 non-test production MoonBit lines
 across 38 files. The recorded native run uses 100 rounds per fixture; small,
@@ -109,8 +111,10 @@ native smoke, and production source inventory checks on Ubuntu, macOS, and
 Windows. The non-test MoonBit source inventory is validated at or above
 20,000 lines without counting generated build, dependency, or test output.
 
-The separate publish workflow validates the package and runs moon publish
---frozen only when manually dispatched or when a version tag is pushed.
+The separate publish workflow validates the package and runs `moon publish`
+when manually dispatched or when a version tag is pushed. It reads the
+repository's Mooncakes credentials secret only during that step and removes
+the temporary credentials afterwards.
 
 ## License
 

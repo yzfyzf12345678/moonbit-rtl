@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.3
+
+- Refreshed the reproducible benchmark record with the latest stable MoonBit toolchain.
+- Fixed GitHub Actions Mooncakes publishing to use the standard credentials file securely.
+- Kept cross-platform validation and generated-interface checks aligned with the release workflow.
+
 ## 0.1.2
 
 - Added deterministic preprocessing, four-state vectors, and fixed-point RTL simulation.

@@ -5,10 +5,10 @@ It is a reproducibility record, not a performance guarantee.
 
 ## Environment
 
-- Date: 2026-08-19
+- Date: 2026-08-20
 - OS: Windows
 - CPU: AMD Ryzen 7 5800H, 8 cores / 16 logical processors
-- MoonBit: moon 0.1.20260807, moonc v0.10.7+bc794d341
+- MoonBit: moon 0.1.20260814, moonc v0.10.8+8606a5800
 - Run mode: native target, warm local build, 100 rounds per fixture
 
 ## Measured run
@@ -25,9 +25,9 @@ Observed output:
 
 | Fixture | Modules | Source lines | Bytes | Tokens / round | Diagnostics / round | Total elapsed | Tokens / ms |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| small | 3 | 31 | 655 | 250 | 4 | 542 ms | 46 |
-| medium | 9 | 119 | 2606 | 973 | 10 | 1286 ms | 75 |
-| large | 25 | 343 | 7634 | 2821 | 27 | 3845 ms | 73 |
+| small | 3 | 31 | 655 | 250 | 4 | 335 ms | 74 |
+| medium | 9 | 119 | 2606 | 973 | 10 | 1349 ms | 72 |
+| large | 25 | 343 | 7634 | 2821 | 27 | 3981 ms | 70 |
 
 The CLI reports aggregate token and diagnostic counts over all rounds. The
 fixture diagnostics are expected findings from the current rule policy; the

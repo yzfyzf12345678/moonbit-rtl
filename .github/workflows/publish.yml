@@ -36,5 +36,11 @@ jobs:
 
       - name: Publish to Mooncakes
         env:
-          MOONCAKES_TOKEN: ${{ secrets.MOONCAKES_TOKEN }}
-        run: moon publish
+          MOONCAKES_CREDENTIALS: ${{ secrets.MOONCAKES_TOKEN }}
+        run: |
+          test -n "$MOONCAKES_CREDENTIALS"
+          install -d -m 700 "$HOME/.moon"
+          printf '%s' "$MOONCAKES_CREDENTIALS" > "$HOME/.moon/credentials.json"
+          chmod 600 "$HOME/.moon/credentials.json"
+          trap 'rm -f "$HOME/.moon/credentials.json"' EXIT
+          moon publish
