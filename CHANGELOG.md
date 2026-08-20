@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.4
+
+- Replaced the abbreviated license notice with the complete Apache License 2.0 text.
+
 ## 0.1.3
 
 - Refreshed the reproducible benchmark record with the latest stable MoonBit toolchain.
